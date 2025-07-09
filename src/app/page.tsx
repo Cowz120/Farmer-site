@@ -1,15 +1,26 @@
- 'use client'
- import { useState } from 'react';
+'use client'
+import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { generateOtpService } from './otp/otpService';
+import { useNavigate } from 'react-router-dom';
+import { signinService } from './services/signinService';
 
-export default function SignIn() {
+interface Props {
+  email: string;
+  password: string;
+}
+
+export default function SignIn({email, password}:Props) {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     rememberMe: false,
   });
+  const [error, setError] = useState('');
+  const router = useRouter();
 
-  const handleChange = (e:any  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -17,10 +28,25 @@ export default function SignIn() {
     }));
   };
 
-  const handleSubmit = (e:any  ) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add form submission logic here (e.g., API call)
     console.log('Form submitted:', formData);
+
+    const datas = {
+      email: formData.email,
+      password: formData.password,
+    };
+
+    try {
+      await signinService({email ,password});
+      await generateOtpService(email);
+
+
+      router.push(`/otp?email=${datas.email}`);
+    } catch (error: any) {
+      console.error('Sign-in error:', error);
+      setError(error.message || 'Failed to sign in. Please try again.');
+    }
   };
 
   return (
@@ -30,6 +56,7 @@ export default function SignIn() {
         <p className="text-center text-gray-600 mb-6">
           Sign in to access the Livestock Marketplace platform
         </p>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">

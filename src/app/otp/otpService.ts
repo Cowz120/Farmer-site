@@ -10,9 +10,9 @@ export const generateOtpService = async (email:string) => {
         body: JSON.stringify({ email }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to resend OTP');
-      }
+      // if (!response.ok) {
+      //   throw new Error('Failed to resend OTP');
+      // }
 
       const data = await response.json();
       console.log("data from the server",data);

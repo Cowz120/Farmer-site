@@ -13,10 +13,14 @@ import { generateOtpService, validateOtpService } from './otpService';
 import { useRouter } from 'next/navigation';
 
 interface Props {
-  email:string
+  email: string;
 }
 
-const OTPVerification = ({email}:Props) => {
+interface UserProfile {
+  isComplete: boolean;
+}
+
+const OTPVerification = ({ email }: Props) => {
   const [otp, setOtp] = useState('');
   const [timeRemaining, setTimeRemaining] = useState(176); // 2:56 in seconds
   const [canResend, setCanResend] = useState(false);
@@ -47,23 +51,48 @@ const OTPVerification = ({email}:Props) => {
   };
 
   const handleResend = async () => {
-    // if (!canResend || isLoading) return;
-
-    // setIsLoading(true);
     setError('');
     setSuccess('');
 
     try {
-      // Replace with your actual resend API endpoint
-      
       await generateOtpService(email);
-     
       setTimeRemaining(180);
       setCanResend(false);
       setSuccess('New OTP sent to your email!');
     } catch (err: any) {
       setError(err.message || 'Failed to resend OTP. Please try again.');
-    } 
+    }
+  };
+
+  const checkUserProfileAndRoute = async () => {
+    try {
+      // Simulated API call to check user profile status
+      // Replace with actual API call to your backend
+      const response = await fetch('/api/user/profile', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any necessary auth headers
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch profile status');
+      }
+
+      const profileData: UserProfile = await response.json();
+      
+      // Route based on profile completion status
+      if (profileData.isComplete) {
+        router.push('/dashboard');
+      } else {
+        router.push('/profile');
+      }
+    } catch (err: any) {
+      // Fallback to profile creation if profile check fails
+      setError(err.message || 'Error checking profile status');
+      router.push('/profile');
+    }
   };
 
   const handleVerify = async () => {
@@ -74,12 +103,13 @@ const OTPVerification = ({email}:Props) => {
     setSuccess('');
 
     try {
-      await validateOtpService({email:email,code:otp});
-      
+      await validateOtpService({ email, code: otp });
       setSuccess('OTP verified successfully!');
-      router.push('/dashboarrd');
-      // Optionally redirect or update UI after successful verification
-    } catch (err:any) {
+      
+      // Check profile status and route accordingly
+      await checkUserProfileAndRoute();
+      
+    } catch (err: any) {
       setError(err.message || 'Verification failed. Please try again.');
     } finally {
       setIsLoading(false);
