@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 
 export default function VaccineSchedule() {
+    const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     livestockType: '',
     animalName: '',
@@ -15,28 +16,36 @@ export default function VaccineSchedule() {
     notification: []
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     // Here you would typically send the data to an API
+     setIsOpen(false);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:any) => {
     const { name, value, type, checked } = e.target;
     if (type === 'checkbox') {
-      setFormData(prev => ({
-        ...prev,
-        notification: checked
-          ? [...prev.notification, value]
-          : prev.notification.filter(item => item !== value)
-      }));
+      setFormData(prev => {
+        return {
+          ...prev,
+          notification: checked
+            ? [...prev.notification, value]
+            : prev.notification.filter(item => item !== value)
+        }
+      })
     } else {
       setFormData(prev => ({
         ...prev,
         [name]: value
       }));
     }
+    };
+    const handleAddStock = () => {
+    setIsOpen(true);
   };
+  console.log(isOpen);
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">

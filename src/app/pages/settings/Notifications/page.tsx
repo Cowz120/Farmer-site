@@ -9,7 +9,7 @@ import {
 
 const Notifications = () => {
   return (
-    <div className='px-6 py-2 items-center justify-center mx-19 my-6 w-fit h-fit border-1 rounded-md'>
+    <div className='px-6 py-2  items-center justify-center bg-white  w-fit h-screen border-1'>
         <form action="" style={{height:"100%", width:"600px"}}>
         <div >
             <div className=' flex items-center justify-between' style={{height:"100px"}}>

@@ -4,7 +4,7 @@ import { Tablecomponent } from './Tablecomponent'
 
 const page = () => {
   return (
-    <div className='flex flex-col gap-10'>
+    <div className='flex flex-col bg-white rounded-md gap-10 p-6'>
      <div className=' items-center'> <Topcommponent /></div>
       <div > <Tablecomponent /></div>
     </div>

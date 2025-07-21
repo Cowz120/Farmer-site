@@ -27,9 +27,9 @@ export default function PaymentMethods() {
   };
 
   return (
-    <div className="w-fit h-fit flex flex-col text-black p-10 mx-10 ">
+    <div className="w-fit h-screen bg-white flex flex-col text-black p-10  ">
       <h2 className="text-lg font-semibold mb-3 text-gray-400">Payment Methods</h2>
-      <div className="bg-white text-black p-4 rounded-lg shadow-md space-y-4 flex-1">
+      <div className="bg-white text-black p-4  space-y-4 flex-1">
         {error && <div className="text-red-500 text-sm">{error}</div>}
         
         <section>

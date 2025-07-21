@@ -7,21 +7,25 @@ export default function SettingsLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body  className="h-1061px  w-723px items-center justify-between"
+    // <html lang="en">
+    //   <body  className="h-1061px  w-723px items-center justify-between"
        
-      >
-        <div className="flex  h-screen  w-screen ">
-            <div className=" w-1/6 ">
+    //   >
+        
+            <div className="  flex mx-6 my-10  gap-4  w-full">
+              <div className="w-fit">
                 <SideBar/>
-            </div>
-            <div className=" w-5/6 ">
-              
-                {children}
-            </div>
-        </div>
+              </div>
+                <div className="w-fit">
+                  {children}
+                </div>
+           
+              </div>
 
-      </body>
-    </html>
+              
+        
+
+    //   </body>
+    // </html>
   );
 }

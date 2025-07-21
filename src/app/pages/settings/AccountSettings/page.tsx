@@ -32,13 +32,12 @@ function ProfilePage({ name, email, phone, code, language, country, timeZone }: 
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className=" rounded-lg shadow-lg p-8 max-w-md w-full">
+      <div className="flex flex-col flex-items-center justify-center bg-white shadow-lg p-8">
         <h1 className="text-2xl font-bold text-center mb-6">Profile Settings</h1>
 
         {/* Profile Picture Section */}
         <div className="flex flex-col items-center mb-6">
-          <div className="relative w-24 h-24 rounded-full overflow-hidden  mb-4">
+          <div className="relative w-24 h-24 rounded-full bg-amber-200 overflow-hidden  mb-4">
             {profilePic ? (
               <Image
                 src={profilePic}
@@ -47,8 +46,8 @@ function ProfilePage({ name, email, phone, code, language, country, timeZone }: 
                 objectFit="cover"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-gray-500">
-                No Image
+              <div className="w-full h-full flex items-center justify-center ">
+                Add Image
               </div>
             )}
           </div>
@@ -78,6 +77,7 @@ function ProfilePage({ name, email, phone, code, language, country, timeZone }: 
 
         {/* Profile Information */}
         <div className="space-y-4">
+          <div className='flex gap-4'>
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
@@ -111,7 +111,8 @@ function ProfilePage({ name, email, phone, code, language, country, timeZone }: 
               />
             </div>
           </div>
-
+          </div>
+          <div className='flex  w-full gap-2'>
           <div>
             <label className="block text-sm font-medium text-gray-700">Language</label>
             <select
@@ -143,6 +144,7 @@ function ProfilePage({ name, email, phone, code, language, country, timeZone }: 
               {/* Add more countries as needed */}
             </select>
           </div>
+         
 
           <div>
             <label className="block text-sm font-medium text-gray-700">Time Zone</label>
@@ -159,9 +161,10 @@ function ProfilePage({ name, email, phone, code, language, country, timeZone }: 
               <option value="Africa/Nairobi">Africa/Nairobi (EAT)</option>
               {/* Add more timezones as needed */}
             </select>
-            <p className="text-sm text-gray-500 mt-1">Current time: 1:24</p>
+            
           </div>
         </div>
+         </div>
 
         {/* Action Buttons */}
         <div className="flex justify-between mt-8">
@@ -177,7 +180,6 @@ function ProfilePage({ name, email, phone, code, language, country, timeZone }: 
           </button>
         </div>
       </div>
-    </div>
   );
 }
 

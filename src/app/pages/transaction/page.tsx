@@ -32,7 +32,7 @@ export default function TransactionList() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
+    <div className="max-w-2xl mx-auto border bg-white rounded-lg p-4 space-y-4">
       <h1 className="text-2xl font-bold mb-4">Transactions</h1>
       <input
         type="text"

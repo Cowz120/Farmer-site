@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { 
-  CgHome, 
   CgList, 
   CgBox, 
   CgShoppingCart, 
@@ -26,12 +25,12 @@ const Sidebar = () => {
 
   const accountItems = [
     { name: 'Account Management', href: '/pages/accountManagement', icon: CgUser },
-    { name: 'Settings', href: "/pages/settings", icon: FaCog },
+    { name: 'Settings', href: "/pages/settings/AccountSettings", icon: FaCog },
     { name: 'Logout', href: '/pages/logout', icon: CgLogOut },
   ];
 
   return (
-    <div className={`bg-white text-black h-screen border-r-2 border-gray-700 ${isOpen ? 'w-full' : 'w-20'} transition-all duration-300 flex  flex-col `}>
+    <div className={`bg-white text-black h-screen border-r-2 border-gray-700} transition-all duration-300 flex  flex-col `}>
       {/* Logo Section */}
       <div className="p-4 flex items-center gap-2">
         <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-800 font-bold">

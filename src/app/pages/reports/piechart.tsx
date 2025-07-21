@@ -61,7 +61,7 @@ export function PieChart1() {
   const categories = React.useMemo(() => vaccinationData.map((item) => item.category), []);
 
   return (
-    <Card data-chart={id} className="flex flex-col" style={{ width: "fit-content", height: "full" }}>
+    <Card data-chart={id} className="flex flex-col " >
       <ChartStyle id={id} config={chartConfig} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">

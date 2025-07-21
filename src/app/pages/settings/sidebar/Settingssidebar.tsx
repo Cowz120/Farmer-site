@@ -51,7 +51,7 @@ const SideBar: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col w-64 h-screen bg-white border-r-2 border-gray-300 shadow-lg">
+    <div className="flex flex-col min-w-fit h-screen bg-white border-r-2 border-gray-300 shadow-lg">
       {/* Header */}
       <div className="w-full py-4 border-b border-gray-200 text-center">
         <h2 className="text-xl font-semibold text-gray-800">SETTINGS</h2>

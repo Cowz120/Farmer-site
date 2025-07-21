@@ -64,6 +64,7 @@ const initialAnimals = [
 ];
 
 function LivestockTable() {
+   const [isOpen, setIsOpen] = useState(false);
   const [animals, setAnimals] = useState(initialAnimals);
   const [filter, setFilter] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
@@ -91,13 +92,16 @@ function LivestockTable() {
     router.push(`/pages/transaction?name=${encodeURIComponent(name)}`);
   };
 
-  const handleCreateVaccineSchedule = () => {
-    router.push("./livestock/VaccineScheduleForm");
-  };
+ 
 
   const filteredAnimals = animals.filter((animal) =>
     animal.name.toLowerCase().includes(filter.toLowerCase())
+
   );
+   const handleCreateVaccineSchedule = () => {
+    setIsOpen(true);
+  };
+  console.log(isOpen);
 
   return (
     <div className="mx-auto max-w-4xl border-1 rounded-2xl p-4">
@@ -180,3 +184,7 @@ function LivestockTable() {
   );
 }
 export default LivestockTable;
+
+function setIsOpen(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
