@@ -135,11 +135,11 @@ export const Midcomponent = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 p-6 rounded-xl shadow-lg  ">
+    <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 p-3  rounded-xl shadow-lg  ">
       {/* Left Section: Chart and Summary */}
-      <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 w-full lg:w-2/3">
+      <div className="flex  gap-4 w-full lg:w-2/3">
         {/* ChartBarActive Component */}
-        <div className="w-full lg:w-1/2 rounded-2xl shadow-md p-4">
+        <div className="w-full lg:w-1/2  p-2">
           <ChartBarActive />
         </div>
 
@@ -148,7 +148,7 @@ export const Midcomponent = () => {
           className="w-full lg:w-1/2  border border-gray-200 rounded-2xl shadow-md p-6"
           aria-label="Livestock Summary"
         >
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-800">Livestock Summary</h2>
             <div className="flex gap-3">
               <button
@@ -191,7 +191,7 @@ export const Midcomponent = () => {
       </div>
 
       {/* Right Section: Pie Chart */}
-      <div >
+      <div className="w-full lg:w-1/2 ">
         <PieChart1 />
       </div>
     </div>

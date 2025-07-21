@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import Head from 'next/head';
+
 
 export default function SecuritySettings() {
   const [email] = useState('');
@@ -53,22 +53,15 @@ export default function SecuritySettings() {
   };
 
   return (
-    <div className='w-fit h-fit mx-16 my-10 '>
-      <Head>
-        <title>Security Settings</title>
-        {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
-      </Head>
-      <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md mt-10">
+    <div className='w-screen h-screen'>
+      
+      <div className="w-md h-screen  p-6 bg-white  shadow-md ">
         <h1 className="text-2xl font-bold mb-6 text-center">Security Settings</h1>
 
         {/* Password Change */}
         <div className="mb-6">
           <h2 className="text-lg font-semibold mb-2">Change Password</h2>
-          <input
-            type="email"
-            value={email}
-            className="w-full p-2 mb-2 border rounded bg-gray-100"
-          />
+         
           <input
             type="password"
             placeholder="Current Password"
@@ -83,6 +76,7 @@ export default function SecuritySettings() {
             onChange={(e) => setNewPassword(e.target.value)}
             className="w-full p-2 mb-2 border rounded"
           />
+
           <button
             onClick={changePassword}
             className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"

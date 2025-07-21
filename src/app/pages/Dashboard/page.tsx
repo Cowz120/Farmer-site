@@ -1,34 +1,29 @@
-import React from 'react'
-import Dashboardtop from './Dashboardtop'
-import LineChart from './LineChart'
-import { ActiveUsers } from './ActiveUsers'
-import RecentActivityTable from './table1'
+import React from "react";
+import Dashboardtop from "./Dashboardtop";
+import LineChart from "./LineChart";
+import { ActiveUsers } from "./ActiveUsers";
+import RecentActivityTable from "./table1";
 
 const Dashboard = () => {
   return (
-    <div className="flex flex-col gap-4">
-      
-        <p className="text-3xl font-semibold  mx-3">OVERVIEW</p>
+    <div className="flex flex-col gap-4 bg-white p-3 rounded-md">
+      <p className="text-3xl font-semibold  mx-3">OVERVIEW</p>
+      <div>
+        <Dashboardtop />
+      </div>
+      <div className="flex justify-center gap-4">
         <div>
-            <Dashboardtop/>
+          <LineChart />
         </div>
-        <div className="flex  gap-4">
-          <div >
-        <LineChart/>
+        <div>
+          <ActiveUsers />
+        </div>
       </div>
-      <div><ActiveUsers/>
+      <div className="my-4">
+        <RecentActivityTable />
       </div>
-      
-      
-
-
-      </div>
-      <div className='my-9' ><RecentActivityTable/>
-      </div>
-
-
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

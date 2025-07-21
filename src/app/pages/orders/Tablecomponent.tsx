@@ -66,8 +66,8 @@ export function Tablecomponent() {
   );
 
   return (
-    <div>
-      <div className="flex gap-2 mb-4">
+    <div className='shadow-md mb-4 border border-gray-200 rounded-lg p-4'>
+      <div className="flex gap-2 ">
         {["ALL", "Pending", "Paid", "Unpaid"].map((status) => (
           <button
             key={status}

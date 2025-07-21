@@ -39,7 +39,7 @@ const DateToday = () => {
   });
 
   return (
-    <div className="flex flex-col w-full p-6 bg-gray-50 min-h-[200px] rounded-lg shadow">
+    <div className="flex flex-col w-full    ">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">Orders</h1>
       <div className="flex items-center gap-4 mb-6">
         <div className="relative inline-flex items-center justify-center">

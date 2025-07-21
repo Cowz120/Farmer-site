@@ -1,7 +1,11 @@
 "use client";
 import { useRouter } from 'next/navigation';
+import AddLivestockDialog from './AddStock/AddLivestockDialog';
+import { useState } from 'react';
 
 function AnimalStats() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const stats = [
     { label: 'Cows', value: '2,300' },
     { label: 'Chickens', value: '100' },
@@ -11,16 +15,15 @@ function AnimalStats() {
     { label: 'Pregnant', value: '500' },
   ];
 
-  const router = useRouter();
-
   const handleAddStock = () => {
-    router.push('./livestock/AddStock');
+    setIsOpen(true);
   };
+  console.log(isOpen);
 
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Total Animals</h1>
+        <h1 className="text-2xl font-bold">LIVESTOCK</h1>
         <button
           onClick={handleAddStock}
           className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -39,6 +42,9 @@ function AnimalStats() {
           </div>
         ))}
       </div>
+      {isOpen && (
+        <AddLivestockDialog isOpen={isOpen} setIsOpen={setIsOpen} />
+      )}
     </div>
   );
 }

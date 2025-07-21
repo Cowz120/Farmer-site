@@ -84,7 +84,7 @@ function RecentActivityTable() {
       </div>
 
       {/* Table */}
-      <Table>
+      <Table className="w-full">
         <TableCaption>Transaction history</TableCaption>
         <TableHeader>
           <TableRow>
